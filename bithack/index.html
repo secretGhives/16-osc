@@ -1,0 +1,500 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css'>
+
+    <style class="cp-pen-styles">
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        animation: colorfader 6s ease-in-out infinite;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        overflow: hidden;
+      }
+      body h1 {
+        font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+        font-size: 92px;
+        text-align: center;
+        text-transform: uppercase;
+        text-rendering: optimizeLegibility;
+        margin-top: 9rem;
+      }
+      body h1.elegantshadow {
+        color: #fff;
+      }
+      @media (min-width: 690px) {
+        body .diamonds {
+          flex-direction: row !important;
+        }
+      }
+      body .diamonds {
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+      }
+      body .diamonds .user {
+        margin: 1rem;
+        flex: 1 0 auto;
+        cursor: pointer;
+        box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
+        transform-style: preserve-3d;
+        position: relative;
+        z-index: 1;
+        width: 222px;
+        height: 222px;
+      }
+      .csstransforms body .diamonds .user {
+        overflow: hidden;
+      }
+      body .diamonds .user:hover .diamond .content .description {
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        transform: rotateY(0deg);
+      }
+      body .diamonds .user:hover .diamond .content .title {
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        top: 75px;
+      }
+      body .diamonds .user .diamond {
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        height: 222px;
+        overflow: hidden;
+        text-align: center;
+        text-decoration: none;
+        transform-style: preserve-3d;
+        width: 222px;
+      }
+      body .diamonds .user .diamond .content {
+        display: block;
+        height: 222px;
+        width: 222px;
+        z-index: 2;
+      }
+      body .diamonds .user .diamond .content .title {
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        display: block;
+        font-size: 28px;
+        font-weight: 600;
+        margin: 0 auto;
+        position: absolute;
+        text-align: center;
+        text-transform: uppercase;
+        top: 95px;
+        vertical-align: middle;
+        width: 100%;
+        z-index: 3;
+      }
+      body .diamonds .user .diamond .description {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        display: table-cell;
+        padding: 0px 10px;
+        position: absolute;
+        top: 110px;
+        transform: rotateY(180deg);
+        vertical-align: middle;
+      }
+      body .diamonds.users .user {
+        z-index: 1;
+        animation: leftreturn ease-in-out .3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        /*when the spec is finished*/
+      }
+      body .diamonds.users .user .diamond .content .title, body .diamonds.users .user .diamond .content .description {
+        background: #fafafa;
+        color: #000;
+        opacity: .8;
+      }
+      body .diamonds.users .user .diamond .content img {
+        width: 320px;
+        height: 320px;
+        position: absolute;
+        top: -50px;
+        left: -50px;
+      }
+      body .diamonds.users .user.on {
+        position: fixed;
+        z-index: 11;
+        animation: skydrop ease-in-out .3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        /*when the spec is finished*/
+        margin: 0px;
+      }
+      body .diamonds.users .user.on .content .title, body .diamonds.users .user.on .content .description {
+        opacity: 0;
+      }
+      body .diamonds.users .userinfo {
+        opacity: 0px;
+        z-index: 0;
+        display: block;
+        position: absolute;
+        top: 260px;
+        left: -50%;
+        max-width: 600px;
+        transform: translateX(-50%);
+        padding: 10px 40px 40px;
+        -webkit-transition: all 0.3s ease-in 0s;
+        -moz-transition: all 0.3s ease-in 0s;
+        transition: all 0.3s ease-in 0s;
+      }
+      body .diamonds.users .userinfo h1, body .diamonds.users .userinfo h2, body .diamonds.users .userinfo .longdesc {
+        text-align: center;
+        z-index: 30;
+        display: block;
+      }
+      body .diamonds.users .userinfo h1 {
+        text-transform: uppercase;
+        font-size: 36px;
+        line-height: .6em;
+      }
+      body .diamonds.users .userinfo h2 {
+        text-transform: uppercase;
+        font-size: 24px;
+        line-height: .6em;
+      }
+      body .diamonds.users .userinfo h3 {
+        text-transform: uppercase;
+        font-size: 18px;
+      }
+      body .diamonds.users .userinfo .longdesc {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        margin: auto;
+        text-align: center;
+      }
+      body .diamonds.users .userinfo ul {
+        display: block;
+        font-size: 14px;
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
+      body .diamonds.users .userinfo ul li {
+        font-size: 14px;
+        color: black;
+        display: block;
+        padding: 5px 0;
+      }
+      body .diamonds.users .userinfo ul li:first-child {
+        padding: 0px 0px 5px;
+      }
+      body .diamonds.users .userinfo ul li.current {
+        font-weight: 800;
+      }
+      body .diamonds.users .userinfo ul li.current:after {
+        content: " (Current Project)";
+        font-weight: 400;
+        font-size: 12px;
+      }
+      body .diamonds.users .userinfo.on {
+        opacity: 1;
+        z-index: 30;
+        left: 50%;
+        -webkit-transition: all 0.3s ease-in 0.5s;
+        -moz-transition: all 0.3s ease-in 0.5s;
+        transition: all 0.3s ease-in 0.5s;
+      }
+
+      #userbg {
+        background: #fff100;
+        display: block;
+        height: 100%;
+        width: 100%;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: all 0.3s ease-in 0.3s;
+        -moz-transition: all 0.3s ease-in 0.3s;
+        transition: all 0.3s ease-in 0.3s;
+        opacity: 0;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: 0;
+        font-size: 20px;
+        padding: 40px;
+      }
+      #userbg .close {
+        font-size: 20px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fafafa;
+        border-radius: 100%;
+        padding: 5px;
+        height: 30px;
+        width: 30px;
+        font-weight: 300;
+        line-height: 16px;
+        text-indent: 5px;
+        z-index: 10;
+      }
+      #userbg.on {
+        opacity: 1;
+        z-index: 10;
+        -webkit-transition: all 0.3s ease-in 0s;
+        -moz-transition: all 0.3s ease-in 0s;
+        transition: all 0.3s ease-in 0s;
+      }
+
+      @keyframes skydrop {
+        0% {
+          left: 50%;
+          top: -1000px;
+          opacity: 0;
+          margin-left: -110px;
+          transform: scaleX(1) scaleY(1) skewX(0deg) skewY(0deg);
+        }
+        100% {
+          left: 50%;
+          top: 70px;
+          opacity: 1;
+          margin-left: -110px;
+          transform: scaleX(1) scaleY(1) skewX(0deg) skewY(0deg);
+        }
+      }
+      @keyframes colorfader {
+        0% {
+          background-color: #87c4eb;
+        }
+        50% {
+          background-color: #87d8eb;
+        }
+        100% {
+          background-color: #87c4eb;
+        }
+      }
+      .tv {
+        position: absolute;
+        background-color: transparent;
+      }
+
+      .mana {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        animation: image 3s linear alternate infinite;
+      }
+
+      .image-1 {
+        /* http://www.flickr.com/photos/tjt195/25677898 by Taro Tailor  */
+        background-image: url(https://openclipart.org/image/800px/svg_to_png/191935/bitcoin.png);
+        animation-delay: 0.1s;
+      }
+
+      .image-2 {
+        /* http://www.flickr.com/photos/barabeke/800582464 by Barabeke */
+        background-image: url(https://openclipart.org/image/800px/svg_to_png/191935/bitcoin.png);
+        animation-delay: 0.2s;
+      }
+
+      .image-3 {
+        /* http://www.flickr.com/photos/joansorolla/6511512805 by Joan Sorolla */
+        background-image: url(https://openclipart.org/image/800px/svg_to_png/191935/bitcoin.png);
+        animation-delay: 0.4s;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+    <h1 class="elegantshadow">TEAM OSC</h1>
+    <div class="diamonds users">
+      <div id="userbg">
+        <div class="close">x</div>
+      </div>
+      <article id="user1" class="user"><a class="diamond">
+          <div class="content"><img src="//placehold.it/222"/>
+            <div class="title">Nickname</div>
+            <div class="description">Title</div>
+          </div></a></article>
+      <section id="user1Info" class="userinfo">
+        <h1>Member Name</h1>
+        <h2>Title</h2>
+        <div class="longdesc">Fanny pack wolf et duis, wayfarers photo booth four dollar toast cornhole tofu. Raw denim reprehenderit Bushwick mollit. Do nisi trust fund enim, officia tote bag viral tousled Thundercats McSweeney's retro YOLO butcher iPhone. Trust fund Brooklyn pug, odio biodiesel raw denim roof party actually plaid. Bicycle rights sunt officia, semiotics single-origin coffee mollit ex Blue Bottle dolore nesciunt non. YOLO next level VHS, squid kogi Pinterest iPhone fingerstache blog. Excepteur plaid migas, anim put a bird on it nisi blog Etsy Thundercats.
+        </div>
+      </section>
+      <article id="user2" class="user"><a class="diamond">
+          <div class="content"><img src="//placehold.it/222"/>
+            <div class="title">Nickname 2</div>
+            <div class="description">Title</div>
+          </div></a></article>
+      <section id="user2Info" class="userinfo">
+        <h1>Member Name 2</h1>
+        <h2>Title</h2>
+        <div class="longdesc">Fanny pack wolf et duis, wayfarers photo booth four dollar toast cornhole tofu. Raw denim reprehenderit Bushwick mollit. Do nisi trust fund enim, officia tote bag viral tousled Thundercats McSweeney's retro YOLO butcher iPhone. Trust fund Brooklyn pug, odio biodiesel raw denim roof party actually plaid. Bicycle rights sunt officia, semiotics single-origin coffee mollit ex Blue Bottle dolore nesciunt non. YOLO next level VHS, squid kogi Pinterest iPhone fingerstache blog. Excepteur plaid migas, anim put a bird on it nisi blog Etsy Thundercats.
+        </div>
+      </section>
+      <article id="user3" class="user"><a class="diamond">
+          <div class="content"><img src="//placehold.it/222"/>
+            <div class="title">Nickname 3</div>
+            <div class="description">Title</div>
+          </div></a></article>
+      <section id="user3Info" class="userinfo">
+        <h1>Member Name 3</h1>
+        <h2>Title</h2>
+        <div class="longdesc">Fanny pack wolf et duis, wayfarers photo booth four dollar toast cornhole tofu. Raw denim reprehenderit Bushwick mollit. Do nisi trust fund enim, officia tote bag viral tousled Thundercats McSweeney's retro YOLO butcher iPhone. Trust fund Brooklyn pug, odio biodiesel raw denim roof party actually plaid. Bicycle rights sunt officia, semiotics single-origin coffee mollit ex Blue Bottle dolore nesciunt non. YOLO next level VHS, squid kogi Pinterest iPhone fingerstache blog. Excepteur plaid migas, anim put a bird on it nisi blog Etsy Thundercats.
+        </div>
+      </section>
+    </div>
+
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
+
+    <script>
+      //diamonds
+      var timeout = null
+      $('.diamond').click(function() {
+        var $diamond = $(this)
+        var $diamondParent = $diamond.parent()
+        clearTimeout(timeout)
+        $('#userbg').toggleClass("on");
+        $('.user, .userinfo').not(this).parent().removeClass("on");
+
+        timeout = setTimeout(function() {
+          $diamondParent.toggleClass('on')
+          clearTimeout(timeout)
+        }, 300);
+        $diamondParent.next('.userinfo').toggleClass("on");
+
+      });
+
+      $(".close").click(function () {
+        $(".user, .userinfo, #userbg").removeClass("on");
+      });
+
+
+
+      var shadowTexts = $('.elegantshadow'),
+          arrayLetters;
+      $.each(shadowTexts, function () {
+          var i = 0;
+          if (this.innerHTML !== undefined) {
+              arrayLetters = this.innerHTML.split('');
+              for (i = 0; i < arrayLetters.length; i++) {
+                  arrayLetters[i] = '<span>' + arrayLetters[i] + '</span>';
+              }
+              this.innerHTML = arrayLetters.join('');
+              arrayLetters = $(this).find('span');
+          }
+      });
+
+      function handleMouseMove(e) {
+          $(arrayLetters).each(function () {
+              var shadowStepY = ($(this).offset().top - e.y) / 300,
+                  shadowStepX = ($(this).offset().left - e.x) / 300,
+                  fullTextShadow = '0px 0px 0px #000',
+                  i = 1;
+              for (i = 1; i < 20; i += 2) {
+                  fullTextShadow += ', ' + (shadowStepX * i) + 'px ' + (shadowStepY * i) + 'px 1px rgba(33,66,99,' + (1 / i) + ')';
+              }
+              $(this).css({
+                  'text-shadow': fullTextShadow
+              });
+          });
+      }
+      document.onmousemove = handleMouseMove;
+
+
+
+      // COINS
+
+      var width = $('body').width();
+      var height = $('body').height();
+
+      $(function() {
+        (function initAnimation() {
+          var lastStyleSheet = document.styleSheets[document.styleSheets.length - 1];
+          try {
+            lastStyleSheet.insertRule('@-webkit-keyframes fall { \
+                from { -webkit-transform: translateY(0); } \
+                to   { -webkit-transform: translateY(' + (height + 100) + 'px); } \
+            }', lastStyleSheet.cssRules.length);
+          } catch (e) {}
+
+          try {
+            lastStyleSheet.insertRule('@-moz-keyframes fall { \
+                from { -moz-transform: translateY(0); } \
+                to   { -moz-transform: translateY(' + (height + 100) + 'px); } \
+            }', lastStyleSheet.cssRules.length);
+          } catch (e) {}
+
+          try {
+              lastStyleSheet.insertRule('@keyframes fall { \
+                from { transform: translateY(0); } \
+                to   { transform: translateY(' + (height + 100) + 'px); } \
+            }', lastStyleSheet.cssRules.length);
+          } catch (e) {}
+        })();
+
+        var tvCount = 0;
+        (function spawnNextTV() {
+          var depth = Math.random();
+          var side = Math.floor(10 + 30 * (1-depth));
+
+          var imageIndex = 1 + Math.floor(Math.random() * 3)
+
+          var $tv = $('<div>');
+          $tv.addClass('tv')
+             .css({
+                left: Math.floor(Math.random() * width) + 'px',
+                top: '0px',
+                width:  1.2*side + 'px',
+                height: 1.2*side + 'px',
+                animationName: 'fall',
+                animationDuration: (3 + 6 * depth) + 's',
+                animationIterationCount: 'infinite',
+                animationTimingFunction: 'linear',
+                opacity: 0.1 + 0.3*(1-depth)
+             })
+             .html('<div class="mana image-' + imageIndex + '"></div>');
+
+          $('body').append($tv);
+          tvCount += 1;
+
+          if (tvCount < 12)
+            window.setTimeout(spawnNextTV, 12);
+        })();
+      });
+    </script>
+  </body>
+</html>

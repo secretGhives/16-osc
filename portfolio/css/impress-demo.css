@@ -1,0 +1,344 @@
+/*
+    So you like the style of impress.js demo?
+    Or maybe you are just curious how it was done?
+
+    You couldn't find a better place to find out!
+
+    Welcome to the stylesheet impress.js demo presentation.
+
+    Please remember that it is not meant to be a part of impress.js and is
+    not required by impress.js.
+    I expect that anyone creating a presentation for impress.js would create
+    their own set of styles.
+
+    But feel free to read through it and learn how to get the most of what
+    impress.js provides.
+
+    And let me be your guide.
+
+    Shall we begin?
+*/
+
+
+/*
+    We start with a good ol' reset.
+    That's the one by Eric Meyer http://meyerweb.com/eric/tools/css/reset/
+
+    You can probably argue if it is needed here, or not, but for sure it
+    doesn't do any harm and gives us a fresh start.
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*
+    Now here is when interesting things start to appear.
+
+    We set up <body> styles with default font and nice gradient in the background.
+    And yes, there is a lot of repetition there because of -prefixes but we don't
+    want to leave anybody behind.
+*/
+html { overflow: hidden; }
+body { font-family: 'Open Sans', sans-serif; line-height: .9; font-size: 42px; }
+
+.background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: -moz-radial-gradient(50% 50%, farthest-side, #fff, #A5CDFF);
+    background: -webkit-gradient(radial, 50% 50%, 250, 50% 50%, 750, from(#fff), to(#A5CDFF));
+    z-index: 0;
+    opacity: 1;
+}
+
+#hint {
+    z-index: 9999;
+    position: fixed; top: 0; left: 20px;
+    font-size: 16px;
+    background: #ddd;
+    color: #666;
+    padding: 6px 12px 12px;
+    font-style: italic;
+    opacity: 0;
+    border-radius: 0 0 10px 10px;
+
+    -webkit-transition: opacity 2s;
+    -moz-transition:    opacity 2s;
+    -ms-transition:     opacity 2s;
+    -o-transition:      opacity 2s;
+    transition:         opacity 2s;
+
+    -webkit-transition-delay: 6s;
+    -moz-transition-delay: 6s;
+    -ms-transition-delay: 6s;
+    -o-transition-delay: 6s;
+    transition-delay: 6s;
+}
+
+#hint a { text-decoration: underline; font-style: italic; }
+
+#hint:hover {
+    opacity: 1;
+    -webkit-transition: opacity .25s;
+    -moz-transition:    opacity .25s;
+    -ms-transition:     opacity .25s;
+    -o-transition:      opacity .25s;
+    transition:         opacity .25s;
+}
+
+a, a:hover, a:visited {
+    text-decoration: none;
+    font-style: normal;
+    color: #666;
+    cursor: pointer;
+}
+a:hover { color: #333;}
+
+.title { font-size: 275px; }
+.big { text-transform: uppercase; margin: 0; padding: 0; }
+.bold { font-weight: 800; }
+.light { font-weight: 400; }
+.extralight { font-weight: 300; letter-spacing: .1em; }
+.small { display: block; padding: 20px; font-size: 20px;  }
+.medium { display: block; padding: 10px; font-size: 10px;  }
+
+blockquote {
+    text-align: justify;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+blockquote .author {
+    display: block;
+    text-align: right;
+    padding: 10px 40px;
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.img-wrap { margin: 0 auto; }
+.img-inline { display: inline-block; padding: 12px 3px; }
+.img-link { text-decoration: none; }
+.img-border { border: solid 1px #aaa; }
+
+
+/* COMMON STEP STYLES */
+
+.step {
+    text-align: center;
+    width: 1000px;
+    padding: 20px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    -ms-box-sizing:     border-box;
+    -o-box-sizing:      border-box;
+    box-sizing:         border-box;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
+    -ms-transition:     opacity 1s;
+    -o-transition:      opacity 1s;
+    transition:         opacity 1s;
+
+    text-shadow: rgba(0,0,0,.01) 0 0 1px; /* Chrome @font-face anti-aliasing fix */
+}
+
+.step:not(.active) { opacity: 0.1; }
+
+
+/* STEP SPECIFIC STYLES */
+
+
+/* TITLE */
+#frog {
+    position: absolute;
+    top: -267px;
+    right: 53px;
+}
+#title {width: 900px; height: 360px; text-align: justify; position: relative;}
+#title-text1 { font-size: 2rem; }
+#title-text2 { font-size: 6rem; }
+#title-text3 { font-size: 2rem; }
+#title-text4 { font-size: 2rem; }
+
+#respond-text1 { font-size: 3rem; }
+#respond-text2 { font-size: 6rem; }
+#respond-text3 { font-size: 3rem; }
+
+
+
+/* WHAT */
+#what {}
+#what-custom {}
+#what-development {}
+#what-qa {}
+#what-engagement {}
+
+
+
+/* WHY */
+#why {}
+#why-quote {}
+
+
+/* WHO */
+#who {}
+#who-real-not { font-size: 24px; padding-bottom: 10px; position: relative; left: 3px; }
+#who-real-real { font-size: 63px; }
+#who-akqa { font-size: 91px; }
+#who-akqa-title { font-size: 91px; }
+#who-akqa-desc { font-size: 36px; padding-top: 10px; }
+#who-conflict { font-size: 88px; }
+#who-conflict-title { font-size: 88px; }
+#who-conflict-desc { font-size: 25px; padding-top: 10px; margin-left: 8px; }
+#who-osc {}
+#who-osc img {max-width: 333px}
+#who-more { font-size: 90px; }
+#who-more a { font-size: 60px; }
+
+
+
+
+/* HOW */
+#how {}
+#how-quote blockquote { text-align: center; font-size: 70px; line-height: 1.2; }
+#how-frameworks {}
+#how-frameworks span { font-weight: 800; font-size: 45px; display: block; }
+#how-frameworks-text { font-size: 129px; line-height: .9; }
+#how-whatscrum { position: relative; left: 20px; font-size: 42px; }
+#how-savetime { position: relative; left: 20px; font-size: 63px; }
+#how-best { font-size: 117px; }
+#how-best6 .extralight { letter-spacing: 7px; }
+
+
+/* WHERE */
+#where { width: 1200px; padding: 0; }
+#where .big { font-size: 150px; }
+#where p { font-style: italic; font-size: 30px; margin: 24px; padding: 0; color: #666; }
+#where p.first { margin-bottom: 45px; font-size: 40px; }
+#where a { font-style: italic; font-weight: bold; text-decoration: underline; }
+#where-leader-la { font-size: 2rem; }
+#where-leader-lw { font-size: 4rem; letter-spacing: 10px; }
+.where-step { width: 1100px; }
+.where-step .extralight { line-height: .9; }
+
+
+.vcard {text-align: left; }
+.vcard strong { font-weight: bold; }
+#officeLocation {display: flex; }
+.oLoc {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.6rem;
+}
+.oLoc img { max-width: 600px; }
+
+
+
+
+
+
+/* FLIPBOOK */
+.flipbook-viewport {
+  overflow: hidden;
+  width: 999px;
+  height: 333px;
+}
+
+.flipbook-viewport .container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+}
+
+.flipbook-viewport .flipbook {
+  width: 100%;
+  height: 100%;
+}
+
+.flipbook-viewport .page {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.flipbook .page {
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.flipbook-viewport .page img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 0;
+}
+
+.flipbook-viewport .shadow {
+  -webkit-transition: -webkit-box-shadow 0.5s;
+  -moz-transition: -moz-box-shadow 0.5s;
+  -o-transition: -webkit-box-shadow 0.5s;
+  -ms-transition: -ms-box-shadow 0.5s;
+  -webkit-box-shadow: 0 0 20px #ccc;
+  -moz-box-shadow: 0 0 20px #ccc;
+  -o-box-shadow: 0 0 20px #ccc;
+  -ms-box-shadow: 0 0 20px #ccc;
+  box-shadow: 0 0 20px #ccc;
+}

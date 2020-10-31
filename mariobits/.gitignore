@@ -1,0 +1,7 @@
+dist
+dist/**
+*.zip
+node_modules/
+npm-debug.log
+api/changetip_access_token.txt
+vendor
